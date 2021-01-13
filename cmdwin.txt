@@ -1,0 +1,10 @@
+
+
+1. help color > color A n other
+2. ping
+3. tree
+4. route
+5. netstat
+6. nslookup
+7. ipconfig all
+8. tracert

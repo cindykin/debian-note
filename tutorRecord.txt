@@ -1,0 +1,18 @@
+so rencana aku gini:
+kita harus mainin play
+pause bandicam supaya gausah ngedit lama2
+jd ngeditnya cuma dikit gitu.
+
+
+
+
+
+
+
+rule :
+1. dibrowseer kita pilih dulu section menu yang terfokus.
+2. kita kasih penjelasan terus scroll ke point area yang mau dicopy terus copy ke vscode
+3. lalu test dibrowser, abis tu gw bilang edit code itu sesukanya.
+4. terus tunjukin hasilnya dibrowser yang udah kita ambil dari index1
+5. then stop it
+lalu repeat tutor itu!!

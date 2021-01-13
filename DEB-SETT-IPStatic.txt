@@ -1,0 +1,39 @@
+SETTING IP DHCP JADI STATIC DEBIAN
+
+g harus dr dhcp jg hwhw
+===MAIN SETUP===
+udh jd root udh gt ja
+
+===PROCESS===
+1. buka file network setting di interface
+cmd :: nano /etc/network/interfaces
+2. beri tanda pagar pada ::
+#source /etc/network/interfaces.d/ <- kasi tanda # didpn baris jd wrn biru
+dimulai dari baris :
+allow-hotplug eth0
+#iface eth0 inet dhcp <- kasi tanda # didpn baris jd wrn biru
+iface eth0 inet static
+	address 192.168.10.10
+	netmask 255.255.255.0
+	gateway 192.168.10.1
+3. lalu restart network
+cmd :: /etc/init.d/networking restart
+
+===TESTING===
+1. cek ip
+cmd :: 
+ip a
+ifconfig
+
+===IF = TRUE===
+pasti akan tampil
+di eth0
+inet 192.168.10.10
+
+di bagian inet akan muncul ip add yg anda tentukan sendiri
+
+===ELSE===
+ipnya tidak berganti
+
+advice ::
+coba restart system debiannya secara keseluruhan

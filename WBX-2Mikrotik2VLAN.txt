@@ -1,0 +1,76 @@
+buat vlan pake 2 mikrotik dgn akses internet
+disini gw buat 2 vlan
+jika sudah selesai disetting letaknya :
+mikrotik 1 terdapat 4 port :
+port 1 untuk isp
+port 4 untuk share ke port 1 mikrotik 2
+
+mikrotik 2 terdapat 4 port :
+port 1 untuk connect ke mikrotik 1
+port 2,3,4 untuk connectkan pc ke internet
+
+buka winbox gais
+router 1 setting  :
+1. interface - vlan - add
+
+2. tampil new interface buat 2 vlan :
+nama : vlan10 dan vlan20
+vlanid : 10 dan 20
+interfaces : ether4
+
+3. ip - addresses - add
+
+4. tambah detail :
+address : 192.168.10.1/24
+network : 192.168.10.0
+interface : vlan10
+address : 192.168.20.1/24
+network : 192.168.10.0
+interface : vlan20
+
+5. ip - dhcp client - add
+
+6. dhcp client :
+interfaces : ether1
+sampe muncul status bound 
+
+7. ip - dhcp server - dhcp setup
+
+8. dhcp setup :
+dhcp server interfacess : vlan10
+dhcp server interfacess : vlan20
+next next bae
+
+9. ip - firewall - nat - add
+
+10. nat rule
+chain : srcnat
+out interface : ether 1
+action : masquer
+
+
+
+router 2: 
+1. interfaces - interface
+2. clic ether2/3/4 setting
+master port ether1
+3. switch - port - ether1
+switch port
+nama : ether 1
+vlan mode : secure
+vlan header : add if missing
+apply
+4. switch port ether 2/3/4
+vlan mode : secure
+valn header : always strip
+default vlan id : 10/20
+5. switch - vlan - add
+6. new switch vlan
+switch : switch 1
+vlan id : 10
+ports : ether 1
+	ether 2/3/4
+switch : switch 1
+vlan id : 20
+ports : ether 1
+	ether 2/3/4

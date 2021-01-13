@@ -1,0 +1,34 @@
+reboot : shutdown -r now || systemctl reboot
+shutdown : shutdown -h now || systemctl poweroff
+copy : cp<spasi>namafolder/namafile<spasi>namafile
+pindah dir aktif : cd<spasi>nama folderr
+kmbali kefolder sebelumnya : cd bae
+dir : nampilin isi folder
+nano /etc/network/interfaces : sett network
+nano : buka teks editor
+
+sudo /etc/init.d/networking restart = buat restart network di linux
+nano /etc/ssh/ssh_config = cek port 
+/etc/init.d/ssh restart
+
+apt install xxx
+caro cek apakah program itu berjalan dengan baik
+cmd :: systemctl restart xxx
+kalo berhsil coba cek status
+cmd :: systemctl status xxx
+biasanya kalo cek status aktif, kecuali kayak dhcp server 
+awalnya failed, harus disett dulu baru bisa active
+
+
+service --status-all
+ini berguna bgt buat cek nama paket apl yg lg running
+
+ganti ip server jd static
+ip client static
+server-client satu jaringan
+============================
+ssh -> tinggal masuki ip server diclient
+ftp -> hapus #DefaultRoot n Ipv6 off, restart, ftp:ipserver
+samba -> tmbh config, restart, buat dir, ubh hak akses dir, \\ip server
+dhcp -> config 1st tgl ganti b long lines, config 2st 2 lines, restart deb
+dns->

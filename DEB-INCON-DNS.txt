@@ -1,0 +1,61 @@
+(incon) INSTALL & CONFIG DNS SERVER
+
+===MAIN SETUP===
+dns = domain name system
+sistem translator yang translate alamat ip jadi
+domain/sebaliknya
+
+===PROCESS===
+1. install dns
+cmd :: apt install bind9 dnutils
+2. masuk ke dir bind gausah keluar
+cmd :: cd /etc/bind
+3. lalu edit file config
+cmd :: nano named.conf.options
+4. tambahkan dan ubah
+cmd ::
+forwarders { 8.8.8.8; 1.1.1.1; };
+
+dnssec-validation auto;
+auth-nxdomain no;	# conform to RFC1035
+
+listen-on-v6 { none; };
+listen-on port 53 { localhost; 192.168.100.0/24; };
+allow-query { localhost; 192.168.100.0/24; };
+recursion yes;
+5. lalu edit file config
+cmd :: nano named.conf.local
+6. tambahkan dipaling bawah
+cmd ::
+zone "kin.oke" {
+	type master;
+		file "/etc/bind/forward.kin.oke";
+};
+zone "100.168.192.in-addr.apra" {
+	type master;
+		file "/etc/bind/reverse.kin.oke";
+};
+7. lalu copy file db agar tidak usah tulis ulang format confignya
+cmd :: cp db.local forward.kin.oke
+8. lalu edit file config yg sudah dicopy barusan
+cmd :: nano forward.kin.oke
+9. edit dan tambahkan seperti gambar di
+D:\FSF\FSF - 11\teexte\forward.kin.oke
+10. lalu copy file db agar tidak usah tulis ulang format confignya
+cmd :: cp db.127 reverse.kin.oke
+11. lalu edit file config yg sudah dicopy barusan
+cmd :: nano reverse.kin.oke
+12. edit dan tambahkan seperti gambar di
+D:\FSF\FSF - 11\teexte\reverse.kin.oke
+13. restart dan cek status
+cmd :: systemctl restart bind9
+systemctl status bind9
+14. edit tmbah nama domain dan ip server pada conf dns resolver.
+file ini sblmny sudah diisi dengan ip dari dns server google n cloudflare
+cmd :: nano /etc/resolv.conf
+15. tambahkan ini
+cmd ::
+search kin.oke
+nameserver 192.168.100.10 ato 192.168.100.1
+nameserver 8.8.8.8
+nameserver 1.1.1.1

@@ -1,0 +1,34 @@
+UPDATE REPO DEBIAN SECARA ONLINE :
+
+===MAIN RULES===
+1. sudah superuser/root next tutor wajib udh root jd gusa w tulis ulg
+2. ada koneksi internet (ubah network set jd dhcp)
+
+===PROCESS===
+1. settingan link download repo difile sources.list
+cmd :: nano /etc/apt/sources.list
+
+2. ganti link yg tertera disources.list dengan link repo yg aktif
+3. jika ok, save
+cmd :: ctrl+x lalu y
+
+===TESTING===
+1. lalu bisa
+ ditest/diinstall update ketikkan bbrp cmd ::
+	apt update
+	apt-get update
+	apt-get dist-upgrade
+	apt-get upgrade
+	apt-get install
+2. pastikan anda mendapat koneksi internet yg cukup baik utk up,
+karna file up pasti cukup besar
+
+===IF TRUE===
+akan tampil byk link dan proses download serta install yg cukup
+banyak dan berderet dari atas ke bawah
+
+
+>cek yg bisa diup :
+apt list --upgradeable
+
+cmd = command

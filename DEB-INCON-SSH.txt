@@ -1,0 +1,64 @@
+(incon) INSTALL & CONFIG SSH SERVER
+
+===MAIN SETUP===
+ssh ini = peremote server gt
+jadi kita bisa buka server kita dimanapun(dipc kita->klien)
+kita berada, asal diserver kita diinstall ssh
+
+dgn ssh,
+kita bisa remote server kita dari pc kita sendiri,
+tanpa harus ke tempat server kita.
+
+DEB-VM = SERVER
+EX : IP :: 192.168.10.10
+GW :: NONE
+
+WINDOWS-REALOS = CLIENT
+EX : IP :: 192.168.10.20
+GW :: 192.168.10.10
+===MAIN RULES===
+koneksi internet ini gw download online soalnya
+link sources.list working
+
+===PROCESS===
+1. install ssh
+cmd :: apt-get install openssh-server
+apt install openssh-server -y
+2. jika sudah, tp ragu apa sudah terinstall ato blm bs ketik lagi
+cmd :: apt install openssh-server
+bila reply already installed blabla = sudah terinstall
+3. jika sudah terinstall coba cek konektivitas ssh utk pertama kali
+cmd :: 
+systemctl start/enable ssh
+systemctl status ssh
+active/tidak nanti saja yg penting layanan ssh sudah tersedia
+4. ganti ip server yg td dhcp -> static utk ip boleh ikuti rules
+5. ganti jg ip pc client jd static
+6. connect server dgn client pake kabel lan
+7. config server
+cmd ::
+nano /etc/ssh/sshd_config
+nano /etc/ssh/ssh_config
+8. yg bisa dilakukan pada 2-2 file config :
+ganti port 22 -> 49152 (tidak diganti jg tidak apa2)
+klo diganti bisa tau apa perubahan ini bekerja atau tidak
+lalu cek lagi berganti tidak portnya
+kalo ganti port cmd :: systemctl restart ssh
+cmd :: systemctl status ssh = pastikan statusnya active(running)
+9. pastikan server n client sudah saling reply pada cmd ping ip
+10. pada client buka putty, masukkan :
+ip server : 192.168.10.10
+serta port : 49152 (apabila td diganti, jika tidak biarkan 22)
+
+===IF TRUE===
+putty diclient akan menampilkan terminal dari server debian kita
+meminta username serta password server debian kita.
+
+sma kaya kita buka debian pertama kali, cuma bedanya ini
+kita buka debiannya ditempat client. 
+
+===ELSE===
+putty nya ga kebuka kwkw uuu kasyan..
+cek lagi server sm client udh connect lom
+soalnya inti ssh ini
+install - connect server client - buka apl pembantu diclient - selesai

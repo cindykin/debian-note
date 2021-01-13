@@ -1,0 +1,9 @@
+(incon) INSTALL & CONFIG SAMBA
+
+===MAIN SETUP===
+belom
+
+===PROCESS===
+1. install samba
+cmd :: apt install samba
+2.

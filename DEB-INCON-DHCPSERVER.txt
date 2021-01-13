@@ -1,0 +1,56 @@
+(incon) INSTALL & CONFIG SSH SERVER
+
+===MAIN SETUP===
+hm ak jg ga baca heheh
+
+===MAIN RULES===
+pastikan sudah menulis sources.list yang benar dan sdh diupgrade n diinstall/pake dvd
+
+===PROCESS===
+1. install dhcp server 
+cmd :: apt install isc-dhcp-server
+2. jka ini pastikan sdh terinstall/belom coba config file config dhcpnya
+cmd :: nano /etc/dhcp/dhcpd.conf
+3. cari a slighty ... activekan dari :
+subnet 192.168.10.0 netmask 255.255.255.0 {
+	range 192.168.10.10 192.168.10.30;
+	option domain-name-servers 192.168.10.1;
+	option domain-name "kingais.com";
+	option routers 192.168.10.1;
+	option bc-address 192.168.10.255;
+	default lease time 600;
+	max-lease-time 7200;
+}
+4. lalu edit config
+cmd :: nano /etc/default/isc-dhcp-server
+5. activekan :
+DHCPv4 <-- bagian yg paling atas sj diaktiveke
+tambahi eth :
+INTERFACES="enp0s3 (sesuai nama eth dr ip a)"
+6. edit inet dideb
+cmd:: nano /etc/network/interfaces
+7. ubah jd static :
+cmd ::
+auto eth
+iface eth inet static
+	address 192.168.10.10
+	netmask 255.255.255.0
+	network 192.168.10.0
+	bc 192.168.10.255
+	gateway 192.168.10.1
+8. lalu jika sudah semua restart inet dan dhcp
+cmd ::
+/etc/init.d/networking restart
+systemctl restart isc-dhcp-server
+/etc/init.d/isc-dhcp-server restart
+9. cek status dhcp server
+cmd :: systemctl status isc-dhcp-server
+
+===IF TRUE===
+jika berhasil restart dhcp, maka status dhcp server jadi active
+karna dari awal install failed, setelah disett jadi active harusnya
+
+===ELSE===
+staus dhcp-server akan failed
+coba restart debian
+pastikan network telah diset ke statis pake ip contoh

@@ -1,0 +1,37 @@
+CONNECT 1st RULE KALO MAU KONEK ANTARA SERVER DEB-VM DGN WINDOWS-REALOS
+
+===MAIN SETUP===
+DEB-VM = SERVER
+EX : IP :: 192.168.10.10
+GW :: NONE
+WINDOWS-REALOS = CLIENT
+EX : IP :: 192.168.10.20
+GW :: 192.168.10.10
+
+jadi cuma perlu 1 laptop
+
+===MAIN RULES===
+1. network adapter setting di os server vm = vm host-only adapter
+2. IP WAJIB 1 JARINGAN (3 kolom angka :: xxx.xxx.XX = SERVER & CLIENT) 
+
+===PROCESS===
+1. ip sudah diubah ke statis (udh pernah ako bwuad txt jadiin statis) cek file DEB-SETT-IPStatic
+2. pastikan ip sudah terganti ! cek
+cmd :: ip a
+ifconfig
+
+===TESTING===
+1. jika ip sudah terganti boleh coba diping 1 sama lain
+2. di server : diterminal ketikkan ping 192.168.10.20
+3. di client : di cmd ketikkan ping 192.168.10.10
+
+===IF TRUE===
+1. pasti dapat message reply from blabla
+
+
+===ELSE===
+reply message : host unreachable/anything
+coba :
+1. matiin firewall
+2. defender ?
+3. 

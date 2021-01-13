@@ -1,0 +1,7 @@
+cara kerja dhcp :
+1. pc klien dihidupkan, fitur dhcp diaktivkan dalam LAN, PC client melakukan broadcast mencari keberadaan penyedia/server dhcp proses ini disebut request
+2. paket dhcp akan diteruskan/dibc ksluruh host dlm jaringan
+3. dhcp yang aktif/listen akan menerima paket DHCP discover, server akan memeriksaa dan memberikan paket balik/paket offer yang berisi ip, dns, subnet lain kepd client. thapan diterima least offer
+4. client akan merespon pemberian req lagi sebgai tanda paket dibutuhkan
+5. server akan merespon dengan mengirimkan ack -> dhcp atk untuk konfirmasi dan disetujui dengan jangka waktu tertentu, tahapan ini disebut lease acknowledge
+6. apabila client selesai/expired maka akan dikembalikan lagi keserver

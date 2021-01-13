@@ -1,0 +1,32 @@
+(incon) INSTALL & CONFIG SSH SERVER
+
+===MAIN SETUP===
+belom
+
+===PROCESS===
+1. install ftp server
+cmd :: apt install proftpd
+2. set ip deb jadi statis
+cmd :: nano /etc/network/interfaces
+3. ubah file config ftp 
+cmd :: nano /etc/proftpd/proftpd.conf
+4. diedit menjadi
+cmd :: 
+hilangkan tanda pagar di default root
+di useIPv6 jdikan off
+5. lalu restart proftpd 
+cmd :: systemctl restart proftpd
+5. set ip client jd 1 jaringan dengan server deb
+6. lalu dibrowser client ketikkan dialamat browser/filezilla client
+ftp://ip address server deb
+cth :
+ip server 192.168.10.5
+ip client 192.168.10.10
+ketik dibrowser client ftp://192.168.10.5 enter
+lalu masukkan psswd serta username server (karna kita blm setting utk login tanpa user account)
+
+===IF TRUE===
+halaman web ftp akan terbuka
+
+===IF FALSE===
+tidak ada apapun yang tampil dan koneksi failed
