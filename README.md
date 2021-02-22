@@ -1,2 +1,4 @@
 # debian-note
-my short debian note for school task, because i'm forgetful hehe
+my short debian cmd note for school task
+
+maintenance
